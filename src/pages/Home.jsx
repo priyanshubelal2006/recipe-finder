@@ -46,49 +46,49 @@ function Home() {
 
   if (errorMsg) {
     return (
-      <main className="max-w-6xl mx-auto px-4 py-8">
-        <p className="text-accent text-center">{errorMsg}</p>
+      <main className="max-w-6xl px-4 py-8 mx-auto">
+        <p className="text-center text-accent">{errorMsg}</p>
       </main>
     );
   }
 
   return (
-    <main className="max-w-6xl mx-auto px-4 py-8">
+    <main className="max-w-6xl px-4 py-8 mx-auto">
       <form
         onSubmit={handleSearch}
-        className="flex gap-2 max-w-md mx-auto mb-8"
+        className="flex max-w-md gap-2 mx-auto mb-8"
       >
         <input
           type="text"
           name="query"
           placeholder="Search recipes..."
-          className="flex-1 border border-border rounded px-3 py-2 bg-card text-text outline-none focus:border-accent"
+          className="flex-1 px-3 py-2 border rounded outline-none border-border bg-card text-text focus:border-accent"
         />
         <button
           type="submit"
-          className="bg-accent hover:bg-accent-hover text-white rounded px-4 py-2 font-medium"
+          className="px-4 py-2 font-medium text-white rounded bg-accent hover:bg-accent-hover"
         >
           Search
         </button>
       </form>
 
-      {loading && <p className="text-center py-6 text-muted">Loading...</p>}
+      {loading && <p className="py-6 text-center text-muted">Loading...</p>}
       {!loading && recipes.length === 0 && (
-        <p className="text-center py-6 text-muted">{`No recipes found for '${searchQuery}'`}</p>
+        <p className="py-6 text-center text-muted">{`No recipes found for '${searchQuery}'`}</p>
       )}
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {recipes.map((recipe) => (
           <RecipeCard key={recipe.id} recipe={recipe} />
         ))}
       </div>
 
       {recipes.length < total && (
-        <div className="text-center mt-8">
+        <div className="mt-8 text-center">
           <button
             type="button"
             onClick={() => fetchRecipes(recipes.length, searchQuery)}
-            className="bg-accent hover:bg-accent-hover text-white rounded px-6 py-2 font-medium"
+            className="px-6 py-2 font-medium text-white rounded bg-accent hover:bg-accent-hover"
           >
             Load More
           </button>
