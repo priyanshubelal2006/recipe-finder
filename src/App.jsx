@@ -6,7 +6,7 @@ import  RecipeDetail  from "./pages/RecipeDetail";
 
 function App() {
   return (
-    <div className="min-h-screen bg-background text-text font-sans">
+    <div className="min-h-screen font-sans bg-background text-text">
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />}></Route>
